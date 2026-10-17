@@ -6,6 +6,10 @@ public class Bank {
     
     public static void main(String[] args) {
         List<BankAccount> accounts = AccountDataManager.loadAccounts();
+        // Skip numbers already used by saved accounts so new accounts never repeat one
+        while (!isAccountNumberUnique(accounts, nextAccountNumber)) {
+            nextAccountNumber++;
+        }
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
